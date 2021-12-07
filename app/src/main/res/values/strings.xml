@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">My Application1</string>
+    <string-array name="spinnername">
+        <item>访问商店界面</item>
+        <item>添加到愿望单</item>
+    </string-array>
+</resources>
