@@ -9,7 +9,6 @@
         android:id="@+id/img"
         android:layout_width="330dp"
         android:layout_height="150dp"
-        android:background="@drawable/_2"
         android:layout_marginStart="3dp"/>
     <TextView
         android:id="@+id/text_name"

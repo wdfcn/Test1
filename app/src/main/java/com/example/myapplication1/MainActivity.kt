@@ -238,15 +238,15 @@ class MainActivity : AppCompatActivity(), MailSender.OnMailSendListener{
     fun putData()
     {
         goodsList.add(GoodsInfo(R.drawable._2, 1, "双点医院", "20"))
-        goodsList.add(GoodsInfo(R.drawable._2, 2, "双人成行", "20"))
+        goodsList.add(GoodsInfo(R.drawable._5, 2, "双人成行", "20"))
         goodsList.add(GoodsInfo(R.drawable._2, 3, "双点医院", "20"))
-        goodsList.add(GoodsInfo(R.drawable._2, 4, "双人成行", "20"))
+        goodsList.add(GoodsInfo(R.drawable._5, 4, "双人成行", "20"))
     }
 
     fun putData2()
     {
         imglist.add(GoodsInfo(R.drawable._2, 1, "双点医院", "10"))
-        imglist.add(GoodsInfo(R.drawable._2, 2, "双人成行", "20"))
+        imglist.add(GoodsInfo(R.drawable._5, 2, "双人成行", "20"))
         imglist.add(GoodsInfo(R.drawable._2, 3, "双点医院", "30"))
     }
 
