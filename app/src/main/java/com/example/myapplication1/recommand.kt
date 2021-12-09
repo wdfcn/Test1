@@ -1,6 +1,7 @@
 package com.example.myapplication1
 
 class recommand{
+
     fun recommand(id:Int): Pair<String, String> {
         var boughtlist = arrayListOf<Int>()
         var tag = arrayListOf<String>()
