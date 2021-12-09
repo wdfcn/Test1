@@ -32,19 +32,25 @@ var spinner_id:Int = 1
 class MainActivity : AppCompatActivity(), MailSender.OnMailSendListener{
     val goodsList:ArrayList<GoodsInfo> = ArrayList<GoodsInfo>()
     val imglist:ArrayList<GoodsInfo> = ArrayList<GoodsInfo>()
+    val hotlist:ArrayList<GoodsInfo> = ArrayList<GoodsInfo>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val layoutManager2 = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
         val layoutManager = GridLayoutManager(this,2);
+        val hotlayout = LinearLayoutManager(this)
+        hot_list.layoutManager = hotlayout
         list1.layoutManager=layoutManager
         list2.layoutManager=layoutManager2
         val adapter1 = GoodsAdapter(goodsList)
         val adapter2 = ImgAdapter(imglist)
+        val adapter3 = hotAdapter(hotlist)
         list1.adapter = adapter1
         list2.adapter = adapter2
+        hot_list.adapter = adapter3
         putData()
         putData2()
+        putData3()
         setspinner()
         //spinner.setSelection(1, true)
         var get_text =""
@@ -115,13 +121,13 @@ class MainActivity : AppCompatActivity(), MailSender.OnMailSendListener{
         Toast.makeText(this@MainActivity, "邮件已发送，请确认查收", Toast.LENGTH_SHORT).show()
     }
 
+    //双行小图
     class GoodsViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val goodspic: ImageView = view.findViewById(R.id.goods_pic)
         val goodsname: TextView = view.findViewById(R.id.goods_name)
         val goodsprice: TextView = view.findViewById(R.id.goods_price)
         var id = ""
     }
-
     //适配器
     private inner class GoodsAdapter(val goodsList:List<GoodsInfo>): RecyclerView.Adapter<GoodsViewHolder>()
     {
@@ -140,7 +146,7 @@ class MainActivity : AppCompatActivity(), MailSender.OnMailSendListener{
             holder.goodsprice.text=info.goodsprice
             holder.id = info.goodsid.toString()
             holder.itemView.setOnClickListener {
-                id_trans2(holder, position)
+                id_trans2(holder)
             }
         }
 
@@ -151,13 +157,14 @@ class MainActivity : AppCompatActivity(), MailSender.OnMailSendListener{
 
     }
 
+
+    //大图
     class ImgViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val pic: ImageView = view.findViewById(R.id.img)
         val name : TextView = view.findViewById(R.id.text_name)
         val price : TextView = view.findViewById(R.id.text_price)
         var id = ""
     }
-
     //适配器
     private inner class ImgAdapter(val imgList:List<GoodsInfo>): RecyclerView.Adapter<ImgViewHolder>()
     {
@@ -176,7 +183,7 @@ class MainActivity : AppCompatActivity(), MailSender.OnMailSendListener{
             holder.price.text = info.goodsprice
             holder.id = info.goodsid.toString()
             holder.itemView.setOnClickListener {
-                id_trans1(holder, position)
+                id_trans1(holder)
             }
         }
         //列表行数
@@ -185,6 +192,46 @@ class MainActivity : AppCompatActivity(), MailSender.OnMailSendListener{
         }
 
     }
+
+
+    //热销
+    class hotViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val goodspic: ImageView = view.findViewById(R.id.goods_pic)
+        val goodsname: TextView = view.findViewById(R.id.goods_name)
+        val goodsprice: TextView = view.findViewById(R.id.goods_price)
+        var id = ""
+    }
+    //适配器
+    private inner class hotAdapter(val hotList:List<GoodsInfo>): RecyclerView.Adapter<hotViewHolder>()
+    {
+        //创建视图
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): hotViewHolder {
+            val view =
+                LayoutInflater.from(parent.context).inflate(R.layout.hot_elem_layout1,parent,false)
+            return  hotViewHolder(view)
+        }
+
+        //绑定数据
+        override fun onBindViewHolder(holder: hotViewHolder, position: Int) {
+            val info =goodsList[position]
+            holder.goodspic.setImageResource(info.goodspic)
+            holder.goodsname.text=info.goodsname
+            holder.goodsprice.text=info.goodsprice
+            holder.id = info.goodsid.toString()
+            holder.itemView.setOnClickListener {
+                id_trans3(holder)
+            }
+        }
+
+        //列表行数
+        override fun getItemCount(): Int {
+            return goodsList.size
+        }
+
+    }
+
+
+
 
     /*private var mOnItemClickListener: OnItemClickListener? = null
 
@@ -196,14 +243,21 @@ class MainActivity : AppCompatActivity(), MailSender.OnMailSendListener{
     fun setOnItemClickListener(onItemClickListener: OnItemClickListener?) {
         mOnItemClickListener = onItemClickListener
     }*/
-    fun id_trans1(view : ImgViewHolder, postion : Int)
+    fun id_trans1(view : ImgViewHolder)
     {
         val intent = Intent(this, GoodsActivity::class.java)
         intent.putExtra("id", view.id)
         startActivity(intent)
     }
 
-    fun id_trans2(view : GoodsViewHolder, postion : Int)
+    fun id_trans2(view : GoodsViewHolder)
+    {
+        val intent = Intent(this, GoodsActivity::class.java)
+        intent.putExtra("id", view.id)
+        startActivity(intent)
+    }
+
+    fun id_trans3(view : hotViewHolder)
     {
         val intent = Intent(this, GoodsActivity::class.java)
         intent.putExtra("id", view.id)
@@ -248,6 +302,14 @@ class MainActivity : AppCompatActivity(), MailSender.OnMailSendListener{
         imglist.add(GoodsInfo(R.drawable._2, 1, "双点医院", "10"))
         imglist.add(GoodsInfo(R.drawable._5, 2, "双人成行", "20"))
         imglist.add(GoodsInfo(R.drawable._2, 3, "双点医院", "30"))
+    }
+
+    fun putData3()
+    {
+        hotlist.add(GoodsInfo(R.drawable._2, 1, "双点医院", "20"))
+        hotlist.add(GoodsInfo(R.drawable._5, 2, "双人成行", "20"))
+        hotlist.add(GoodsInfo(R.drawable._2, 3, "双点医院", "20"))
+        hotlist.add(GoodsInfo(R.drawable._5, 4, "双人成行", "20"))
     }
 
 }
