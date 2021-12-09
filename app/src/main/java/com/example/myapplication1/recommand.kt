@@ -1,7 +1,14 @@
 package com.example.myapplication1
 
 class recommand{
-
+    fun rec_list(id:Int, tag:String): ArrayList<Int> {
+        var boughtlist = arrayListOf<Int>()
+        var list = arrayListOf<Int>()
+        val num = 0
+        if (boughtlist.contains(num)==false)
+            list.add(num)
+        return list
+    }
     fun recommand(id:Int): Pair<String, String> {
         var boughtlist = arrayListOf<Int>()
         var tag = arrayListOf<String>()
