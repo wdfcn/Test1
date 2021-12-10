@@ -16,15 +16,19 @@
         <entry key="..\:/MyApplication1/Test1/app/src/main/res/drawable/shapes3.xml" value="0.2851851851851852" />
         <entry key="..\:/MyApplication1/Test1/app/src/main/res/drawable/shapes4.xml" value="0.27685185185185185" />
         <entry key="..\:/MyApplication1/Test1/app/src/main/res/layout/activity_cart.xml" value="0.264" />
+        <entry key="..\:/MyApplication1/Test1/app/src/main/res/layout/activity_goods.xml" value="0.17300724637681159" />
         <entry key="..\:/MyApplication1/Test1/app/src/main/res/layout/activity_main.xml" value="0.23641304347826086" />
         <entry key="..\:/MyApplication1/Test1/app/src/main/res/layout/activity_user_login.xml" value="0.2269021739130435" />
-        <entry key="..\:/MyApplication1/Test1/app/src/main/res/layout/activity_user_register.xml" value="0.2269021739130435" />
+        <entry key="..\:/MyApplication1/Test1/app/src/main/res/layout/activity_user_register.xml" value="0.264" />
         <entry key="..\:/MyApplication1/Test1/app/src/main/res/layout/activity_user_talk.xml" value="0.2269021739130435" />
         <entry key="..\:/MyApplication1/Test1/app/src/main/res/layout/activity_wishlist.xml" value="0.2115036231884058" />
         <entry key="..\:/MyApplication1/Test1/app/src/main/res/layout/cart_elem_layout1.xml" value="0.4" />
         <entry key="..\:/MyApplication1/Test1/app/src/main/res/layout/cart_main_layout.xml" value="0.264" />
         <entry key="..\:/MyApplication1/Test1/app/src/main/res/layout/goods_elem_layout1.xml" value="0.22192028985507245" />
         <entry key="..\:/MyApplication1/Test1/app/src/main/res/layout/hot_elem_layout1.xml" value="0.22192028985507245" />
+        <entry key="..\:/MyApplication1/Test1/app/src/main/res/layout/img_elem_layout1.xml" value="0.17300724637681159" />
+        <entry key="..\:/MyApplication1/Test1/app/src/main/res/layout/img_elem_layout2.xml" value="0.17300724637681159" />
+        <entry key="..\:/MyApplication1/Test1/app/src/main/res/layout/spinner_dropdown_item.xml" value="0.17300724637681159" />
         <entry key="..\:/MyApplication1/Test1/app/src/main/res/layout/wishlist1_layout.xml" value="0.264" />
         <entry key="..\:/MyApplication1/Test1/app/src/main/res/layout/wishlist2_layout.xml" value="0.4" />
         <entry key="..\:/MyApplication1/app/src/main/res/drawable/btn_shape2.xml" value="0.159375" />
