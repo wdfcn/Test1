@@ -1,5 +1,6 @@
 package com.example.myapplication1;
 
+/*
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 
@@ -31,4 +32,4 @@ public class CustomItemTouchCallback extends ItemTouchHelper.Callback {
         // 从数据源中移除相应的数据
         mItemTouchStatus.onItemRemove(viewHolder.getAdapterPosition());
     }
-}
+}*/
