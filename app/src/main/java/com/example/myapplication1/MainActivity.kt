@@ -111,6 +111,11 @@ class MainActivity : AppCompatActivity(), MailSender.OnMailSendListener{
 
             override fun onNothingSelected(parent: AdapterView<*>?) {sp_first2=false }
         })
+
+        towishlist.setOnClickListener {
+            val intent = Intent(this, WishlistActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun onError(e: Throwable) {
