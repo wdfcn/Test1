@@ -39,7 +39,6 @@ class MainActivity : AppCompatActivity(), MailSender.OnMailSendListener{
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val user_id = 1
         val layoutManager2 = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
         val layoutManager = GridLayoutManager(this,2);
         val hotlayout = LinearLayoutManager(this)
