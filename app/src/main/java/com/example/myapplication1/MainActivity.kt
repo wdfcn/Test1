@@ -22,6 +22,9 @@ import android.widget.TextView
 import android.widget.BaseExpandableListAdapter
 import android.widget.Toast
 import android.widget.ExpandableListView.*
+import okhttp3.FormBody
+import okhttp3.OkHttpClient
+import okhttp3.Request
 import org.xmlpull.v1.XmlPullParser
 import org.xmlpull.v1.XmlPullParserFactory
 import java.io.StringReader
@@ -57,14 +60,19 @@ class MainActivity : AppCompatActivity(), MailSender.OnMailSendListener{
         setspinner()
 
         //list2 添加推荐
-        /*val rec:recommand= recommand()
+        val rec = recommand()
+        val cmd = sqlcommand()
         val pair = rec.recommand(user_id)
-        var sql1 = "select * from goods where id = "
-        sql1 = sql1 + pair.first.toString()
-        getData(sql1, goodsList)
-        sql1 = sql1 + pair.second.toString()
-        getData(sql1, goodsList)*/
-
+        val pair2 = rec.recommandtag(user_id)
+        var sql = "select * from goods where id = "
+        sql = sql + pair.first.toString()
+        getData(sql, goodsList)
+        sql = sql + pair.second.toString()
+        getData(sql, goodsList)
+        recommand1.setText(pair2.first)
+        recommand2.setText(pair2.first)
+        /*var sql1 = "select name from goods where goods_id = "+pair.first
+        cmd.GetInfo(sql1,"name")*/
         var get_text =""
         val sender = mailsender()
         //spinner.setOnItemClickListener { view, view, i, l ->  }
@@ -173,7 +181,6 @@ class MainActivity : AppCompatActivity(), MailSender.OnMailSendListener{
         }
 
     }
-
 
     //大图
     class ImgViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -331,7 +338,7 @@ class MainActivity : AppCompatActivity(), MailSender.OnMailSendListener{
 
 
 
-    /*fun getData(sql:String, listm:ArrayList<GoodsInfo>) {
+    fun getData(sql:String, listm:ArrayList<GoodsInfo>) {
         thread {
             try {
                 val client = OkHttpClient()
@@ -383,7 +390,7 @@ class MainActivity : AppCompatActivity(), MailSender.OnMailSendListener{
                     }
                     XmlPullParser.END_TAG->{
                         if("elem"==nodeName){
-                            listn.add(goodsInfo(id.toInt(),id.toInt(),name,price))
+                            listn.add(GoodsInfo(id.toInt(),id.toInt(),name,price))
                         }
 
                     }
@@ -395,6 +402,6 @@ class MainActivity : AppCompatActivity(), MailSender.OnMailSendListener{
             e.printStackTrace()
         }
 
-    }*/
+    }
 
 }

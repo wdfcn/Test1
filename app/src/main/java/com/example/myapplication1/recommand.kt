@@ -1,5 +1,6 @@
 package com.example.myapplication1
 
+import okhttp3.*
 import org.xmlpull.v1.XmlPullParser
 import org.xmlpull.v1.XmlPullParserFactory
 import java.io.StringReader
@@ -9,7 +10,7 @@ import kotlin.concurrent.thread
 
 class recommand{
 
-    /*//随机推荐用户最喜欢的两个tag里的未购买的游戏
+    //随机推荐用户最喜欢的两个tag里的未购买的游戏
     fun recommand(id:Int): Pair<Int,Int>{
         var pair = recommandtag(id)
         var idlist = arrayListOf<Int>()
@@ -28,6 +29,7 @@ class recommand{
         return Pair(id1, id2)
     }
 
+    //用户所购游戏tag非重复集合
     fun userttag(id:Int): ArrayList<String>{
         var boughtlist = arrayListOf<Int>()//已购游戏
         var tag = arrayListOf<String>()//已购游戏的标签集合
@@ -36,7 +38,7 @@ class recommand{
         var sql2 = ""
         boughtlist = getData(sql)
         for (item in boughtlist){
-            sql2 = "select distinct tag from goostag where goods_id = "+item
+            sql2 = "select distinct tag from goodstag where goods_id = "+item
             tag = getData2(sql2)
             for (item in tag)
             {
@@ -82,7 +84,7 @@ class recommand{
         var sql2 = ""
         boughtlist = getData(sql)
         for (item in boughtlist){
-            sql2 = "select tag from tags where goods_id = "+item
+            sql2 = "select tag from goodstag where goods_id = "+item
             tag = getData2(sql2)
             for (item in tag)
             {
@@ -228,5 +230,5 @@ class recommand{
             e.printStackTrace()
         }
         return list
-    }*/
+    }
 }
