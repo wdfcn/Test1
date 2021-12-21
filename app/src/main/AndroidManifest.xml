@@ -13,6 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
+            android:name=".TagActivity"
+            android:exported="true" />
+        <activity
+            android:name=".LibraryActivity"
+            android:exported="true" />
+        <activity
             android:name=".WishlistActivity"
             android:exported="false" />
         <activity
