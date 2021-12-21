@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity(), MailSender.OnMailSendListener{
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val layoutManager2 = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
-        val layoutManager = GridLayoutManager(this,2);
+        val layoutManager = GridLayoutManager(this,2)
         val hotlayout = LinearLayoutManager(this)
         hot_list.layoutManager = hotlayout
         list1.layoutManager=layoutManager
