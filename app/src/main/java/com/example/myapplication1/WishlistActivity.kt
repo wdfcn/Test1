@@ -1,5 +1,6 @@
 package com.example.myapplication1
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.KeyEvent
@@ -11,9 +12,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_wishlist.*
-
-import androidx.recyclerview.widget.ItemTouchHelper
-
+import okhttp3.*
+import java.net.URLEncoder
+import kotlin.concurrent.thread
 
 
 class WishlistActivity : AppCompatActivity() {
@@ -81,11 +82,12 @@ class WishlistActivity : AppCompatActivity() {
     class GoodsViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val name: TextView = view.findViewById(R.id.goods_name)
         val delete : Button = view.findViewById(R.id.delete)
+        val buy : Button = view.findViewById(R.id.buy)
         val num : TextView = view.findViewById(R.id.num)
-        val id = ""
+        var id = ""
     }
     //适配器
-    private class GoodsAdapter(val goodslist:List<GoodsInfo>): RecyclerView.Adapter<GoodsViewHolder>()
+    private inner class GoodsAdapter(val goodslist:List<GoodsInfo>): RecyclerView.Adapter<GoodsViewHolder>()
     {
         //创建视图
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GoodsViewHolder {
@@ -97,8 +99,12 @@ class WishlistActivity : AppCompatActivity() {
         //绑定数据
         override fun onBindViewHolder(holder: GoodsViewHolder, position: Int) {
             val info = goodslist[position]
+            holder.id = info.goodsid.toString()
             holder.name.setText(info.goodsname)
             holder.num.setText((position+1).toString())
+            holder.buy.setOnClickListener {
+                AddtoCart(holder.id.toInt())
+            }
         }
         override fun getItemCount(): Int {
             return goodslist.size
@@ -107,6 +113,34 @@ class WishlistActivity : AppCompatActivity() {
 
     fun delete_tag(p:Int){
         taglist.removeAt(p)
+    }
+
+    fun cartsearch(){}
+
+    fun AddtoCart(goods_id : Int){
+        InsertCart(goods_id)
+        val intent = Intent(this, CartActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun InsertCart(goods_id:Int) {
+        thread {
+            try {
+                val client = OkHttpClient()
+                val requestBody= FormBody.Builder()
+                    .add("user_id", URLEncoder.encode(user_id.toString(), "UTF-8"))
+                    .add("goods_id", URLEncoder.encode(goods_id.toString(), "UTF-8"))
+                    .build()
+                val request = Request.Builder()
+                    .url("http://$ip:8080/mobile_steam_server_war_exploded/insert_cart.jsp")
+                    .post(requestBody)
+                    .build()
+                val response = client.newCall(request).execute()
+                val responseData =response.body?.string()
+            }catch (e: Exception){
+                e.printStackTrace()
+            }
+        }
     }
 
     fun putData()

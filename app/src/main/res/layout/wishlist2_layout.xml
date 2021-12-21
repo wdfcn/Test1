@@ -24,6 +24,7 @@
             android:id="@+id/goods_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:text="战地1"
             android:layout_marginStart="50dp"
             android:textColor="#FFFFFF"

@@ -161,6 +161,12 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="5dp"
                 android:orientation="horizontal">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/taglist"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="10dp"/>
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
